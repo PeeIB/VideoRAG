@@ -34,3 +34,24 @@ This project processes YouTube lecture videos and enables semantic and lexical s
 ├── app/                       # Streamlit app (optional)
 └── README.md
 
+bash'''
+
+🧮 PostgreSQL Integration
+
+You can load the embeddings into a PostgreSQL database with pgvector for efficient similarity search.
+'''sql
+CREATE TABLE clip_frames (
+    id SERIAL PRIMARY KEY,
+    timestamp FLOAT,
+    image_path TEXT,
+    embedding VECTOR(512)
+);
+
+CREATE TABLE text_segments (
+    id SERIAL PRIMARY KEY,
+    start_time FLOAT,
+    end_time FLOAT,
+    text TEXT,
+    embedding VECTOR(768)
+);
+sql'''
